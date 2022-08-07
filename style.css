@@ -1,0 +1,263 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+:root {
+	/*--bg-color-primary: linear-gradient(white, #ddd);*/
+	--ff-headings: 'Gayathri', sans-serif;
+
+	--clr-bg-body:  #f7f7f7;
+	--clr-primary-green: #088e5c;
+	--clr-light-green: #23aa38;
+	--clr-primary-red: #a21919;
+
+	--w-input: max(100px, 95%);
+	--w-input-mobile: max(100px, 100%);
+}
+
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-row { flex-direction: row; }
+.flex-column { flex-direction: column; }
+.ff-headings { font-family: var(--ff-headings); }
+.fc-primary-headings { color: var(--clr-primary-green); }
+.border-separator {	border-width: 0; border-right: 1px solid grey; }
+
+
+.body {
+	/*background: var(--bg-color-primary);*/
+	min-height: 100vh;
+	background-color: var(--clr-bg-body);
+	font-family: Arial, sans-serif;
+}
+
+.header img {
+	height: clamp(50px, 9vw, 130px);
+}
+
+
+.login-signup {
+	background-color: rgba(255,255,255,1);
+	border-radius: 16px;
+	box-shadow: 1px 1px 10px grey;
+	margin: 0 clamp(6.25rem, 25vw, 30rem);
+	overflow: auto;
+} .login-signup > * {
+	padding: 16px 16px;
+}
+
+@media (max-width: 900px) {
+	.login-signup {
+		flex-direction: column;
+		margin: 0;
+		box-shadow: none;
+		background: none;
+	}
+}
+
+::placeholder {
+	color: grey;
+}
+
+.login-signup  h3 {
+	font-size: clamp(1.2rem, 3vw, 2rem);
+	font-weight: bold;
+}
+
+.login-signup form > * {
+ display: block; 
+}
+.login-signup form input {
+	border: none;
+	background: #ececec;
+	border-bottom: 2px solid lightgrey;
+	transition: border-bottom-color .15s linear;
+	margin-bottom: 6px;
+	padding: 0 4px;
+
+} .login-signup form input:focus {
+	border-bottom-color: var(--clr-primary-green);
+	outline: none;
+}
+
+.login-signup form input[type~="checkbox"],
+.login-signup form label[for~="agreement"],
+.login-signup form label[for~="stay-logged-in"] {
+	display: inline;
+}
+
+.login-signup form input[type="checkbox"]:checked {
+	accent-color: var(--clr-primary-green);
+}
+
+.login-signup form input[type="text"],
+.login-signup form input[type="email"],
+.login-signup form input[type="password"] {
+	width: var(--w-input);
+}
+@media (max-width: 900px) {
+	.login-signup form input[type="text"],
+	.login-signup form input[type="email"],
+	.login-signup form input[type="password"] {
+		width: var(--w-input-mobile);
+	}	
+}
+
+.login-signup a {
+	color: var(--clr-primary-green);
+	text-decoration: none;
+} .login-signup a:hover {
+	text-decoration: underline;
+}
+
+.login-signup form button {
+	padding: 2px 8px;
+	padding-top: 4px;
+	border: none;
+	border-radius: 4px;
+	margin-top: 16px;
+	cursor: pointer;
+} .login-signup form button:hover {
+	opacity: 0.7;
+}
+.login-signup .login form button  {
+	background-color: var(--clr-primary-green);
+	color: white;
+} 
+
+.login-signup .login,
+.login-signup .signup {
+	max-width: 300px;
+}
+
+input[type="text"].error,
+input[type="email"].error,
+input[type="password"].error {
+	border-bottom-color: var(--clr-primary-red);
+} 
+input[type="text"].error::after,
+input[type="email"].error::after,
+input[type="password"].error::after {
+} 
+p.error {
+	color: var(--clr-primary-red);
+	font-size: 0.9rem;
+} p.error::before {
+	content: '⚠ ';
+}
+label.error {
+	color: var(--clr-primary-red);
+}
+
+.alert-popup-bg-wrapper {
+	position: fixed;
+	top: 0; left: 0; right: 0; bottom: 0;
+	background: rgba(255,255,255,0.8);
+	animation: popup-animation 1s ease forwards;
+}
+
+.alert-popup {
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%,-50%);
+	background-color: white;
+	padding: 16px;
+	font-size: 1.1rem;
+	border: 1px solid lightgrey;
+	border-radius: 12px;
+	animation: popup-animation 1s ease forwards;
+} .alert-popup .success {
+	color: var(--clr-primary-green);
+} .alert-popup .error {
+	color: var(--clr-primary-red);
+}
+@keyframes popup-animation {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.popup-gif img,
+.popup-gif svg {
+	margin-bottom: 16px;
+	height: clamp(1.5625rem, 3vw, 9.375rem);
+	animation: icon-animation 1s ease forwards;
+}
+@keyframes icon-animation {
+	0% {
+		height: 0;
+		opacity: 0;
+	}
+	100% {
+		height: clamp(1.5625rem, 3vw, 9.375rem);
+		opacity: 1;
+		transform: rotate(360deg);
+	}
+}
